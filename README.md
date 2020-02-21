@@ -22,9 +22,8 @@ trainDeal:
 bakDeal:
 	the fold log is used for get loss and iou.
 	before use compute_mAP.py need to command this order:
-	./darknet detector valid mask/mask.data mask/mask.cfg backup/mask.back -out "" -gpu 0 -thresh .5
 	
-	then python compute_mAP.py get onetype mAP. 
-	the file annoks.pkl is useful.
-	then python computer_Single_All_mAP.py get all type mAP.
+	./darknet detector valid mask/mask.data mask/mask.cfg backup/mask.back -out "" -gpu 0 -thresh .5
+	python compute_mAP.py  
+	python computer_Single_All_mAP.py 
 	

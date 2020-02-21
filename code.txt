@@ -1,0 +1,37 @@
+　　1 [单GPU训练] 
+
+./darknet detector train mask/mask.data mask/mask.cfg darknet53.conv.74 -i 1
+
+　　2 [多GPU训练] 
+./darknet detector train mask/mask.data mask/mask.cfg darknet53.conv.74 -gpus 0,1,2,3
+
+
+　　3 [从checkpoint继续训练]
+./darknet detector train mask/mask.data mask/mask.cfg backup/mask.backup -gpus 0,1,2,3
+
+　 4 [CPU训练] 
+./darknet detector train <data_cfg> <model_cfg> <weights> -nogpu 
+
+　　5 [生成loss-iter曲线] 在执行训练命令的时候加一下管道，tee一下log：
+
+./darknet detector train mask/mask.data mask/mask.cfg | tee result/log/training.lg
+
+
+Test:
+记得改cfg中batch
+
+1 [single pic]
+./darknet detector test mask/mask.data mask/yolov3.cfg yolov3.weights data/dog.jpg
+
+2 [Mul pics]
+./darknet detect mask/yolov3.cfg backup/mask_10000.weights
+
+3 [camera]
+./darknet detector demo mask/mask.data mask/yolov3.cfg backup/mask_10000.weights
+
+4 [video]
+./darknet detector demo mask/mask.data mask/yolov3.cfg backup/mask_10000.weights <video file>
+
+mAP:
+./darknet detector valid face_mask/mask.data face_mask/mask.cfg backup/mask_10000.weights -out "" -gpu 0 -thresh .5
+

@@ -1,0 +1,8 @@
+# detector valid
+./darknet detector valid cfg/voc.data cfg/yolov3-voc.cfg backup/VOC/yolov3-voc_final.weights -out "" -gpu 0 -thresh .5
+
+# 计算单类mAP
+python compute_mAP.py
+
+# 计算所有类别mAP
+python_computer_Single_ALL_mAP.py

@@ -1,9 +1,10 @@
 import os
 import xml.etree.ElementTree as ET
 
-xmlPath = '/home/pisey/data/mask/train'
-picPath = '/home/pisey/data/mask/train'
+xmlPath = '/home/supernode/anaconda3/envs/py36/darknet/face_mask_ori/Annotataions'
+picPath = '/home/supernode/anaconda3/envs/py36/darknet/face_mask_ori/images'
 nameList = '/home/pisey/anaconda3/envs/yolo/darknet/face_mask_ori/mask_2.name'
+txtPath = '/home/supernode/anaconda3/envs/py36/darknet/face_mask_ori/labels'
 
 def get_xmlPath(xmlPath):
     all_xmlName = next(os.walk(xmlPath))[2]
@@ -80,6 +81,22 @@ def check_2(xmlPath, nameList):
     if allFileCorrect:
         print('check_2 pass, all xml files have right type!')
 
+import  os
+def delete_emFile(txtPath, annoPath, picPath):
+	files = os.listdir(txtPath)
+	for file in files:
+		with open(os.path.join(txtPath, file), 'r') as f:
+			contends =f.read()
+			if contends == '':
+				# os.remove(dir_path+file)
+				# os.remove(os.path.join(txtPath, file))
+				# # a = os.path.join(annoPath, str(file)[:-4] + '.xml')
+				# os.remove(os.path.join(annoPath, str(file)[:-4] + '.xml'))
+				# os.remove(os.path.join(picPath, str(file)[:-4] + '.jpg'))
+				print(str(file) + " is empty, the label/anno/pic will be delete!")
+			else:
+				continue
+	print('all empty file are been delete')
 
 from PIL import Image
 def check_3(xmlPath, picPath):
@@ -135,10 +152,11 @@ def selectPic(xmlPath, picPath):
         print('All pic number is ' + str(len(picFilePath_list)))
 
 
-check_1(xmlPath, picPath)
-check_2(xmlPath, nameList)
-#check_3(xmlPath, picPath)
-#selectPic(xmlPath, picPath)
+check_1(xmlPath, picPath) # check xml with the pic
+check_2(xmlPath, nameList) # check xml with all names
+delete_emFile(txtPath, xmlPath, picPath) # delete empty label/anno/pic
+#check_3(xmlPath, picPath) # check overbounnary
+#selectPic(xmlPath, picPath) # select 416 size pic
 # import argparse
 # def parse_args():
 #     parser = argparse.ArgumentParser()

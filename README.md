@@ -13,11 +13,23 @@ preDeal:
 		check_2 for match type and xml[name]
 		check_3 for match the box whether overbounary.
 		selete_pic for choose the pic size over 416*416.
+		pic_label_rename_singdir.py for change all pic and label name with the same to the fold name.
+		
+		python check_1.py
+		python check_2.py
+		python check_3.py
+		python selete_pic.py
+		python pic_label_rename_singdir.py
 
 	
 trainDeal:
 	create_txt_list.py for get the origin name for each pic.
 	voc_label_anyfold.py for get the Abs for every pic.
+	pic_train_test.py for only image without xml files to split into train and test file.
+	
+	python create_txt_list.py
+	python voc_label_anyfold.py
+	python pic_train_test.py
 	
 bakDeal:
 	the fold log is used for get loss and iou.

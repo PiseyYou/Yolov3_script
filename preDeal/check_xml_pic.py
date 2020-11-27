@@ -1,10 +1,10 @@
 import os
 import xml.etree.ElementTree as ET
 
-xmlPath = '/home/supernode/anaconda3/envs/py36/darknet/face_mask_ori/Annotataions'
-picPath = '/home/supernode/anaconda3/envs/py36/darknet/face_mask_ori/images'
-nameList = '/home/pisey/anaconda3/envs/yolo/darknet/face_mask_ori/mask_2.name'
-txtPath = '/home/supernode/anaconda3/envs/py36/darknet/face_mask_ori/labels'
+xmlPath = '/ext_data/trafficSystem_8type/Annotations'
+picPath = '/ext_data/trafficSystem_8type/JPEGImages'
+nameList = '/ext_data/trafficSystem_8type/trafficSystem.names'
+txtPath = '/ext_data/trafficSystem_8type/labels'
 
 def get_xmlPath(xmlPath):
     all_xmlName = next(os.walk(xmlPath))[2]
@@ -15,6 +15,11 @@ def get_picPath(picPath):
     all_picName = next(os.walk(picPath))[2]
     picPath_list = [os.path.join(picPath, i) for i in all_picName]
     return picPath_list
+
+def get_txtPath(txtPath):
+    all_txtName = next(os.walk(txtPath))[2]
+    txtPath_list = [os.path.join(txtPath, i) for i in all_txtName]
+    return txtPath_list
 
 def get_classNameList(classNamePath):
     with open(classNamePath, 'r', encoding='utf8') as file:
@@ -58,6 +63,19 @@ def check_1(xmlPath, picPath):
             allxmlMarked = False
     if allxmlMarked:
         print('check 1 pass, all xml files have right pic!')
+
+    # check the txt without pic and delete
+    txtFilePath_list = get_txtPath(txtPath)
+    reltxtPath_list = [os.path.basename(i) for i in txtFilePath_list]
+    alltxtMarked = True
+    for txtFilePath in reltxtPath_list:
+        picFilePath = txtFilePath[:-4] + '.jpg'
+        abpicFilePath = os.path.join(picPath, picFilePath)
+        if not os.path.exists(abpicFilePath):
+            delete_file(os.path.join(txtPath, txtFilePath))
+            alltxtMarked = False
+    if alltxtMarked:
+        print('check 1 pass, all txt files have right pic!')
 
 
 # check xml with all type
@@ -154,7 +172,7 @@ def selectPic(xmlPath, picPath):
 
 check_1(xmlPath, picPath) # check xml with the pic
 check_2(xmlPath, nameList) # check xml with all names
-delete_emFile(txtPath, xmlPath, picPath) # delete empty label/anno/pic
+#delete_emFile(txtPath, xmlPath, picPath) # delete empty label/anno/pic
 #check_3(xmlPath, picPath) # check overbounnary
 #selectPic(xmlPath, picPath) # select 416 size pic
 # import argparse

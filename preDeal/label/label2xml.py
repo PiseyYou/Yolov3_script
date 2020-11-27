@@ -4,16 +4,16 @@ from PIL import Image
 import numpy as np
 from tqdm import tqdm
 
-img_path = '/home/ai/anaconda3/envs/helmet/trafficSystem_8type/JPEGImages/'                   #原图.jpg文件的路径
-labels_path = '/home/ai/anaconda3/envs/helmet/trafficSystem_8type/labels/'                    #labels中.txt文件的路径
-annotations_path = '/home/ai/anaconda3/envs/helmet/trafficSystem_8type/Annotations/'          #生成的xml文件需要保存的路径
+img_path = '/ext_data/trafficSystem_8type/JPEGImages/'                   #原图.jpg文件的路径
+labels_path = '/ext_data/trafficSystem_8type/labels/'                    #labels中.txt文件的路径
+annotations_path = '/ext_data/trafficSystem_8type/Annotations/'          #生成的xml文件需要保存的路径
 labels = os.listdir(labels_path)
-clsnames_path = '/home/ai/anaconda3/envs/helmet/trafficSystem_8type/trafficSystem.names'     #names文件的路径
+clsnames_path = '/ext_data/trafficSystem_8type/trafficSystem.names'     #names文件的路径
 with open(clsnames_path,'r') as f:
     classes = f.readlines()
     classes = [cls.strip('\n') for cls in classes]
 def write_xml(imgname,filepath,labeldicts):                     #参数imagename是图片名（无后缀）
-    root = ET.Element('Annotation')                             #创建Annotation根节点
+    root = ET.Element('annotation')                             #创建Annotation根节点
     ET.SubElement(root, 'filename').text = str(imgname)         #创建filename子节点（无后缀）
     sizes = ET.SubElement(root,'size')                          #创建size子节点            
     ET.SubElement(sizes, 'width').text = str(img.shape[1])                 #没带脑子直接写了原图片的尺寸......

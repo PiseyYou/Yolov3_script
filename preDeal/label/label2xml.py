@@ -12,6 +12,7 @@ clsnames_path = '/ext_data/trafficSystem_8type/trafficSystem.names'     #names�
 with open(clsnames_path,'r') as f:
     classes = f.readlines()
     classes = [cls.strip('\n') for cls in classes]
+
 def write_xml(imgname,filepath,labeldicts):                     #参数imagename是图片名（无后缀）
     root = ET.Element('annotation')                             #创建Annotation根节点
     ET.SubElement(root, 'filename').text = str(imgname)         #创建filename子节点（无后缀）

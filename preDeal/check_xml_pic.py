@@ -2,7 +2,7 @@ import os
 import xml.etree.ElementTree as ET
 
 xmlPath = '/ext_data/trafficSystem_8type/Annotations'
-picPath = '/ext_data/trafficSystem_8type/JPEGImages'
+picPath = '/ext_data/trafficSystem_8type/cv_jpg'
 nameList = '/ext_data/trafficSystem_8type/trafficSystem.names'
 txtPath = '/ext_data/trafficSystem_8type/labels'
 

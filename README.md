@@ -6,22 +6,24 @@
 
 ### preDeal:
 * The fold preDeal include (Json/xml) restrore from the annotations：
-#### fold Json for json type.
-* getSelectId.py is try to get need pic from COCO data;<br>
-* getpicJson.py is try to split the pic;<br>
-##### fold xml for xml type.
-* check_xml_pic.py main for 4 check:
-* check_1 for match pic and xml
-* check_2 for match type and xml[name]
-* check_3 for match the box whether overbounary.
-* selete_pic for choose the pic size over 416*416.
-* pic_label_rename_singdir.py for change all pic and label name with the same to the fold name.
-		
+   * fold Json for json type.
+   * getSelectId.py is try to get need pic from COCO data;<br>
+   * getpicJson.py is try to split the pic;<br>
+   
+* fold xml for xml type.
+   * check_xml_pic.py main for 4 check:
+      * check_1 for match pic and xml
+      * check_2 for match type and xml[name]
+      * check_3 for match the box whether overbounary.
+      * selete_pic for choose the pic size over 416*416.
+      * pic_label_rename_singdir.py for change all pic and label name with the same to the fold name.
+	```
 		python check_1.py
 		python check_2.py
 		python check_3.py
 		python selete_pic.py
 		python pic_label_rename_singdir.py
+	```
 
 	
 ### trainDeal:

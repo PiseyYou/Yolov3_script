@@ -7,6 +7,8 @@ preDeal for dataset, trainDeal for prepare training, bakDeal for cal mAP and los
 preDeal:
 	The fold preDeal include (Json/xml) restrore from the annotations：
 	 	fold Json for json type.
+		getSelectId.py is try to get need pic from COCO data;
+		getpicJson.py is try to split the pic;
 	 	fold xml for xml type.
 	 check_xml_pic.py main for 4 check:
 	 	check_1 for match pic and xml

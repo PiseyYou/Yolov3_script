@@ -3,10 +3,10 @@ import random
 from tqdm import tqdm
 
 if __name__ == '__main__':
-    source_folder='/home/ai/data/VideoCapture/rename/highway_mark/images/'
-    saveBasePath = '/home/ai/data/VideoCapture/rename/highway_mark/'
+    source_folder='/home/supernode/anaconda3/envs/helmet/trafficSystem_8type/JPEGImages'
+    saveBasePath = '/home/supernode/anaconda3/envs/helmet/trafficSystem_8type/'
 
-    trainval_percent = 0.8
+    trainval_percent = 0.85
     train_percent = 0.7
 
     total_images = os.listdir(source_folder)
@@ -21,8 +21,8 @@ if __name__ == '__main__':
     print("train and val size",tv)
     print("test size", te)
 
-    ftrainval = open(os.path.join(saveBasePath,'trainval.txt'), 'w')
-    ftest = open(os.path.join(saveBasePath,'test.txt'), 'w')
+    ftrainval = open(os.path.join(saveBasePath, 'trainval.txt'), 'w')
+    ftest = open(os.path.join(saveBasePath, 'test.txt'), 'w')
 
     pbar = tqdm(list)
     for i in pbar:

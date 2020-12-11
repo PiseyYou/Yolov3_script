@@ -23,8 +23,8 @@ def delete_emPic(labelPath, picPath):
 		with open(os.path.join(labelPath, file), 'rb') as f:
 			contends =f.read()
 			if contends == '':
-				os.remove(dir_path+file)
-				# os.remove(os.path.join(labelPath, file))
+				# os.remove(dir_path+file)
+				os.remove(os.path.join(labelPath, file))
 				# # a = os.path.join(annoPath, str(file)[:-4] + '.xml')
 				# os.remove(os.path.join(annoPath, str(file)[:-4] + '.xml'))
 				# os.remove(os.path.join(picPath, str(file)[:-4] + '.jpg'))
